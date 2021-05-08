@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_practice/constants.dart';
+import 'package:navigation_practice/freezed_navigation_routes.dart';
+
 import 'package:navigation_practice/navigation_service.dart';
 import 'package:navigation_practice/router.dart';
 
@@ -15,19 +16,23 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       navigatorKey: NavigationService().navigatorKey,
       onGenerateRoute: CustomRouter.generateCustomRoute,
-      initialRoute: NavigationRoutee.homeRoute.rawValue,
-      home: Home(),
+      initialRoute: NavigationRoute.home(HomePage()).rawValue,
+      home: HomePage(),
     );
   }
 }
 
-class Home extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          NavigationService().navigateTo(NavigationRoutee.feedRoute);
+          NavigationService().navigateTo(
+            NavigationRoute.feed(
+              FeedPage("hello"),
+            ),
+          );
         },
       ),
       body: Center(child: Text('Home')),
@@ -35,10 +40,10 @@ class Home extends StatelessWidget {
   }
 }
 
-class Feed extends StatelessWidget {
+class FeedPage extends StatelessWidget {
   final String data;
 
-  Feed(this.data);
+  FeedPage(this.data);
 
   @override
   Widget build(BuildContext context) {

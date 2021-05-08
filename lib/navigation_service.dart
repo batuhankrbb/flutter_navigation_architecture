@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'package:navigation_practice/freezed_navigation_routes.dart';
 
 class NavigationService {
   NavigationService._();
@@ -13,8 +13,12 @@ class NavigationService {
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  Future<dynamic> navigateTo(NavigationRoutee route, {dynamic arguments}) {
-    return navigatorKey.currentState!.pushNamed(route.rawValue, arguments: arguments);
+  Future<dynamic>? navigateTo(NavigationRoute route) {
+    if (navigatorKey.currentState == null) {
+      return null;
+    }
+    return navigatorKey.currentState!
+        .pushNamed(route.rawValue, arguments: route);
   }
 
   void goBack() {

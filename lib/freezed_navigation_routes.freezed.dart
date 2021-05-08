@@ -16,12 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$NavigationRouteTearOff {
   const _$NavigationRouteTearOff();
 
-  Home home() {
-    return const Home();
+  Home home(HomePage homePage) {
+    return Home(
+      homePage,
+    );
   }
 
-  Feed feed() {
-    return const Feed();
+  Feed feed(FeedPage feedPage) {
+    return Feed(
+      feedPage,
+    );
   }
 }
 
@@ -32,14 +36,14 @@ const $NavigationRoute = _$NavigationRouteTearOff();
 mixin _$NavigationRoute {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() home,
-    required TResult Function() feed,
+    required TResult Function(HomePage homePage) home,
+    required TResult Function(FeedPage feedPage) feed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? home,
-    TResult Function()? feed,
+    TResult Function(HomePage homePage)? home,
+    TResult Function(FeedPage feedPage)? feed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +83,7 @@ class _$NavigationRouteCopyWithImpl<$Res>
 abstract class $HomeCopyWith<$Res> {
   factory $HomeCopyWith(Home value, $Res Function(Home) then) =
       _$HomeCopyWithImpl<$Res>;
+  $Res call({HomePage homePage});
 }
 
 /// @nodoc
@@ -89,44 +94,69 @@ class _$HomeCopyWithImpl<$Res> extends _$NavigationRouteCopyWithImpl<$Res>
 
   @override
   Home get _value => super._value as Home;
+
+  @override
+  $Res call({
+    Object? homePage = freezed,
+  }) {
+    return _then(Home(
+      homePage == freezed
+          ? _value.homePage
+          : homePage // ignore: cast_nullable_to_non_nullable
+              as HomePage,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$Home implements Home {
-  const _$Home();
+  const _$Home(this.homePage);
+
+  @override
+  final HomePage homePage;
 
   @override
   String toString() {
-    return 'NavigationRoute.home()';
+    return 'NavigationRoute.home(homePage: $homePage)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Home);
+    return identical(this, other) ||
+        (other is Home &&
+            (identical(other.homePage, homePage) ||
+                const DeepCollectionEquality()
+                    .equals(other.homePage, homePage)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(homePage);
+
+  @JsonKey(ignore: true)
+  @override
+  $HomeCopyWith<Home> get copyWith =>
+      _$HomeCopyWithImpl<Home>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() home,
-    required TResult Function() feed,
+    required TResult Function(HomePage homePage) home,
+    required TResult Function(FeedPage feedPage) feed,
   }) {
-    return home();
+    return home(homePage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? home,
-    TResult Function()? feed,
+    TResult Function(HomePage homePage)? home,
+    TResult Function(FeedPage feedPage)? feed,
     required TResult orElse(),
   }) {
     if (home != null) {
-      return home();
+      return home(homePage);
     }
     return orElse();
   }
@@ -155,13 +185,18 @@ class _$Home implements Home {
 }
 
 abstract class Home implements NavigationRoute {
-  const factory Home() = _$Home;
+  const factory Home(HomePage homePage) = _$Home;
+
+  HomePage get homePage => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $HomeCopyWith<Home> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FeedCopyWith<$Res> {
   factory $FeedCopyWith(Feed value, $Res Function(Feed) then) =
       _$FeedCopyWithImpl<$Res>;
+  $Res call({FeedPage feedPage});
 }
 
 /// @nodoc
@@ -172,44 +207,69 @@ class _$FeedCopyWithImpl<$Res> extends _$NavigationRouteCopyWithImpl<$Res>
 
   @override
   Feed get _value => super._value as Feed;
+
+  @override
+  $Res call({
+    Object? feedPage = freezed,
+  }) {
+    return _then(Feed(
+      feedPage == freezed
+          ? _value.feedPage
+          : feedPage // ignore: cast_nullable_to_non_nullable
+              as FeedPage,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$Feed implements Feed {
-  const _$Feed();
+  const _$Feed(this.feedPage);
+
+  @override
+  final FeedPage feedPage;
 
   @override
   String toString() {
-    return 'NavigationRoute.feed()';
+    return 'NavigationRoute.feed(feedPage: $feedPage)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Feed);
+    return identical(this, other) ||
+        (other is Feed &&
+            (identical(other.feedPage, feedPage) ||
+                const DeepCollectionEquality()
+                    .equals(other.feedPage, feedPage)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(feedPage);
+
+  @JsonKey(ignore: true)
+  @override
+  $FeedCopyWith<Feed> get copyWith =>
+      _$FeedCopyWithImpl<Feed>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() home,
-    required TResult Function() feed,
+    required TResult Function(HomePage homePage) home,
+    required TResult Function(FeedPage feedPage) feed,
   }) {
-    return feed();
+    return feed(feedPage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? home,
-    TResult Function()? feed,
+    TResult Function(HomePage homePage)? home,
+    TResult Function(FeedPage feedPage)? feed,
     required TResult orElse(),
   }) {
     if (feed != null) {
-      return feed();
+      return feed(feedPage);
     }
     return orElse();
   }
@@ -238,5 +298,9 @@ class _$Feed implements Feed {
 }
 
 abstract class Feed implements NavigationRoute {
-  const factory Feed() = _$Feed;
+  const factory Feed(FeedPage feedPage) = _$Feed;
+
+  FeedPage get feedPage => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FeedCopyWith<Feed> get copyWith => throw _privateConstructorUsedError;
 }
